@@ -98,7 +98,7 @@ export default function Pricing({ onSelectPlan }) {
         </p>
       </div>
 
-      {/* Grid of Listener Cards (Exact Match to User Reference Screenshot) */}
+      {/* Grid of Listener Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
         {listeners.map((l) => (
           <div
@@ -139,13 +139,13 @@ export default function Pricing({ onSelectPlan }) {
               </div>
             </div>
 
-            {/* Bottom 3 Action Pills: Chat (Yellow), Call (Blue), Video (Pink) */}
+            {/* Bottom 3 Action Pills with Vector Material Icons */}
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => handleStartTalk(l, 'chat')}
                 className="py-2 px-2.5 rounded-full border border-amber-300/80 bg-amber-50/50 hover:bg-amber-100 text-slate-900 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs"
               >
-                <span className="w-5 h-5 rounded-full bg-amber-400 text-white flex items-center justify-center text-[10px]">💬</span>
+                <span className="material-symbols-outlined text-[15px] text-amber-600 font-bold">chat_bubble</span>
                 <span>{l.chatRate}</span>
               </button>
 
@@ -153,7 +153,7 @@ export default function Pricing({ onSelectPlan }) {
                 onClick={() => handleStartTalk(l, 'audio')}
                 className="py-2 px-2.5 rounded-full border border-blue-300/80 bg-blue-50/50 hover:bg-blue-100 text-slate-900 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs"
               >
-                <span className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px]">📞</span>
+                <span className="material-symbols-outlined text-[15px] text-blue-600 font-bold">call</span>
                 <span>{l.callRate}</span>
               </button>
 
@@ -161,7 +161,7 @@ export default function Pricing({ onSelectPlan }) {
                 onClick={() => handleStartTalk(l, 'video')}
                 className="py-2 px-2.5 rounded-full border border-pink-300/80 bg-pink-50/50 hover:bg-pink-100 text-slate-900 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs"
               >
-                <span className="w-5 h-5 rounded-full bg-pink-500 text-white flex items-center justify-center text-[10px]">📹</span>
+                <span className="material-symbols-outlined text-[15px] text-pink-600 font-bold">videocam</span>
                 <span>{l.videoRate}</span>
               </button>
             </div>

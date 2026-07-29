@@ -7,7 +7,8 @@ export default function EmotionsSection({ onSelectTopic }) {
   const emotions = [
     {
       id: 'heartache',
-      pill: '💔 Heartache & Silent Goodbyes',
+      iconName: 'favorite',
+      pill: 'Heartache & Silent Goodbyes',
       subtitle: 'Dil Ka Dard',
       headline: '"Aisa lagta hai jaise heart me ek heavy stone rakha ho."',
       description: 'Silent breakup ya purani yaadein? Bina kisi judgment ke apna boojh halka karo.',
@@ -20,7 +21,8 @@ export default function EmotionsSection({ onSelectTopic }) {
     },
     {
       id: 'loneliness',
-      pill: '🌌 Surrounded, Yet Alone',
+      iconName: 'public',
+      pill: 'Surrounded, Yet Alone',
       subtitle: 'Akelepan Ka Ehsaas',
       headline: '"Sab aas-paas hain, par koi samajhta nahi."',
       description: 'Bheed me bhi akele feel ho raha hai? Connect karo kisi aise se jo sach me dhyan se sune.',
@@ -33,7 +35,8 @@ export default function EmotionsSection({ onSelectTopic }) {
     },
     {
       id: 'emotional-vent',
-      pill: '🍃 Holding Back Tears',
+      iconName: 'spa',
+      pill: 'Holding Back Tears',
       subtitle: 'Daba Hua Shor',
       headline: '"Kuch batein kisi ko nahi batayi ja sakti."',
       description: 'Jo kehne me dar lagta hai—yahan 100% anonymous & safe hokar vent out kar do.',
@@ -57,7 +60,10 @@ export default function EmotionsSection({ onSelectTopic }) {
           Step 1: Start With Emotions
         </div>
         <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Jo dil me daba hai, nikalne do.
+          Jo dil me daba hai,{' '}
+          <span className="bg-gradient-to-r from-orange-500 via-rose-500 to-pink-600 bg-clip-text text-transparent">
+            aaj sab nikalne do.
+          </span>
         </h2>
         <p className="mt-2 text-base text-slate-600 font-medium max-w-xl mx-auto">
           Tap an emotion to feel instant validation.
@@ -76,6 +82,7 @@ export default function EmotionsSection({ onSelectTopic }) {
                 : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 shadow-sm'
             }`}
           >
+            <span className="material-symbols-outlined text-lg">{item.iconName}</span>
             <span>{item.pill}</span>
           </button>
         ))}

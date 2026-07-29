@@ -138,9 +138,9 @@ export default function Hero({ onOpenChat }) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-base sm:text-lg text-slate-600 font-medium mb-8 leading-relaxed max-w-xl"
+            className="text-base sm:text-lg text-slate-700 font-bold mb-8 leading-relaxed max-w-xl"
           >
-            Dil ki baat, bina kisi judgment ke. 60 seconds me verified listener se connect ho jao.
+            <span className="text-slate-900 font-black">Jo dil me daba hai, aaj sab nikalne do.</span> Bina kisi judgment ke 60 seconds me verified listener se connect ho jao.
           </motion.p>
 
           {/* 1-Tap Interactive Mood Engagement Bar */}
@@ -158,33 +158,33 @@ export default function Hero({ onOpenChat }) {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               <button
                 onClick={() => onOpenChat('heartache')}
-                className="p-3 rounded-2xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+                className="p-3 rounded-2xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs group"
               >
-                <span className="text-lg">💔</span>
+                <span className="material-symbols-outlined text-xl text-rose-500 group-hover:scale-110 transition-transform">favorite</span>
                 <span>Dil Toota</span>
               </button>
 
               <button
                 onClick={() => onOpenChat('late-night')}
-                className="p-3 rounded-2xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+                className="p-3 rounded-2xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs group"
               >
-                <span className="text-lg">🌙</span>
+                <span className="material-symbols-outlined text-xl text-indigo-500 group-hover:scale-110 transition-transform">bedtime</span>
                 <span>2 AM Stress</span>
               </button>
 
               <button
                 onClick={() => onOpenChat('loneliness')}
-                className="p-3 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+                className="p-3 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs group"
               >
-                <span className="text-lg">🌌</span>
+                <span className="material-symbols-outlined text-xl text-blue-500 group-hover:scale-110 transition-transform">public</span>
                 <span>Akela Lag Raha</span>
               </button>
 
               <button
                 onClick={() => onOpenChat('emotional-vent')}
-                className="p-3 rounded-2xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+                className="p-3 rounded-2xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs group"
               >
-                <span className="text-lg">🍃</span>
+                <span className="material-symbols-outlined text-xl text-amber-500 group-hover:scale-110 transition-transform">spa</span>
                 <span>Vent Karna</span>
               </button>
             </div>
