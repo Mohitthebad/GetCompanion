@@ -1,107 +1,156 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function EmotionsSection({ onSelectTopic }) {
+  const [selectedEmotion, setSelectedEmotion] = useState(0);
+
   const emotions = [
     {
       id: 'heartache',
-      tag: 'Stage 1 • Dil Ka Dard',
-      title: 'Heartache & Silent Goodbyes',
-      subtitle: 'Jab kisi ki yaad bohot heavy lagti hai',
-      description: 'Chahe unke texts miss kar rahe ho, silent breakup process karna ho, ya bas koi sunne wala chahiye jo keh sake—"Aapka dil zaroor heal hoga."',
-      icon: 'favorite',
-      accentColor: 'from-rose-500 to-pink-500',
-      badgeBg: 'bg-rose-50 border-rose-200 text-rose-600',
-      pill: 'Heavy Heart'
+      pill: '💔 Heartache & Silent Goodbyes',
+      subtitle: 'Dil Ka Dard',
+      headline: '"Aisa lagta hai jaise heart me ek heavy stone rakha ho."',
+      description: 'Silent breakup ya purani yaadein? Bina kisi judgment ke apna boojh halka karo.',
+      quote: '"Ek baatchat se boojh kam hone lagta hai."',
+      listener: 'Ananya S.',
+      listenerRole: 'Heartache Support Listener',
+      avatar: 'https://images.unsplash.com/photo-1618151313441-bc79b11e5090?auto=format&fit=crop&w=150&q=80',
+      accentGradient: 'from-rose-500 via-pink-500 to-rose-600',
+      bgGlow: 'bg-rose-500/10'
     },
     {
       id: 'loneliness',
-      tag: 'Stage 1 • Akelepan Ka Ehsaas',
-      title: 'Surrounded, Yet Feeling Alone',
-      subtitle: 'Jab sab ke beech hokar bhi akele lagta hai',
-      description: 'Bheed me ho par lagta hai koi samajhta nahi. Connect karo ek caring listener se jo sach me pooche—"Aaj aapka din kaisa raha?"',
-      icon: 'public',
-      accentColor: 'from-blue-500 to-indigo-500',
-      badgeBg: 'bg-blue-50 border-blue-200 text-blue-600',
-      pill: 'Deep Loneliness'
+      pill: '🌌 Surrounded, Yet Alone',
+      subtitle: 'Akelepan Ka Ehsaas',
+      headline: '"Sab aas-paas hain, par koi samajhta nahi."',
+      description: 'Bheed me bhi akele feel ho raha hai? Connect karo kisi aise se jo sach me dhyan se sune.',
+      quote: '"Yahan aakar lagta hai ki koi sach me sun raha hai."',
+      listener: 'Arjun M.',
+      listenerRole: 'Loneliness Companion',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80',
+      accentGradient: 'from-blue-500 via-indigo-500 to-blue-600',
+      bgGlow: 'bg-blue-500/10'
     },
     {
       id: 'emotional-vent',
-      tag: 'Stage 1 • Daba Hua Shor',
-      title: 'Holding Back Tears & Unsaid Words',
-      subtitle: 'Bina kisi judgment ke khulkar keh do',
-      description: 'Wo batein jo aap doston, family ya office me nahi share kar sakte. Yahan aakar bina kisi dar ke apna dil halka karo.',
-      icon: 'spa',
-      accentColor: 'from-amber-500 to-orange-500',
-      badgeBg: 'bg-amber-50 border-amber-200 text-amber-600',
-      pill: 'Bottled Feelings'
+      pill: '🍃 Holding Back Tears',
+      subtitle: 'Daba Hua Shor',
+      headline: '"Kuch batein kisi ko nahi batayi ja sakti."',
+      description: 'Jo kehne me dar lagta hai—yahan 100% anonymous & safe hokar vent out kar do.',
+      quote: '"Keh dene ke baad saans aati hai."',
+      listener: 'Meera K.',
+      listenerRole: 'Gentle Vent Listener',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80',
+      accentGradient: 'from-amber-500 via-orange-500 to-amber-600',
+      bgGlow: 'bg-amber-500/10'
     }
   ];
 
+  const current = emotions[selectedEmotion];
+
   return (
-    <section id="emotions" className="py-20 px-6 max-w-7xl mx-auto relative">
-      {/* Step Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-extrabold uppercase tracking-widest mb-4">
+    <section id="emotions" className="py-16 px-6 max-w-7xl mx-auto relative">
+      {/* Header */}
+      <div className="text-center max-w-3xl mx-auto mb-10 reveal">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-extrabold uppercase tracking-widest mb-3">
           <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-          Step 1: Pehle Apni Emotions Keh Do
+          Step 1: Start With Emotions
         </div>
         <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Jo dil me daba ke rakha hai, pehle use bahar nikalne do.
+          Jo dil me daba hai, nikalne do.
         </h2>
-        <p className="mt-4 text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-          Pehle kisi cheez ko fix karne ki zaroorat nahi hai. Aapki feelings valid hain. 
-          No clinical judgment, no toxic positivity—bas khulkar dil ki baat.
+        <p className="mt-2 text-base text-slate-600 font-medium max-w-xl mx-auto">
+          Tap an emotion to feel instant validation.
         </p>
       </div>
 
-      {/* Grid of Clean Emotion Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+      {/* Interactive Emotion Pills Selector Bar */}
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-10 max-w-4xl mx-auto reveal">
         {emotions.map((item, idx) => (
-          <motion.div
+          <button
             key={item.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.12 }}
-            onClick={() => onSelectTopic(item.id)}
-            className="group relative bg-white rounded-3xl p-8 border border-slate-200/80 hover:border-rose-300 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+            onClick={() => setSelectedEmotion(idx)}
+            className={`px-6 py-3 rounded-full text-sm font-extrabold transition-all duration-300 flex items-center gap-2 ${
+              selectedEmotion === idx
+                ? 'bg-slate-900 text-white shadow-xl scale-105 ring-4 ring-rose-500/20'
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 shadow-sm'
+            }`}
           >
-            {/* Soft background glow on hover */}
-            <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-rose-100 rounded-full blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+            <span>{item.pill}</span>
+          </button>
+        ))}
+      </div>
 
-            <div>
-              {/* Header Badge */}
-              <div className="flex items-center justify-between mb-6">
-                <div className={`p-3 rounded-2xl bg-gradient-to-br ${item.accentColor} text-white shadow-md shadow-rose-500/10`}>
-                  <span className="material-symbols-outlined text-2xl block">{item.icon}</span>
+      {/* Dynamic Interactive Focus Sanctuary (Replaces Static Grid Cards) */}
+      <div className="max-w-5xl mx-auto reveal">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.98 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="bg-white rounded-3xl border border-slate-200/80 shadow-2xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative overflow-hidden"
+          >
+            {/* Ambient Background Blur Glow */}
+            <div className={`absolute top-0 right-0 w-80 h-80 ${current.bgGlow} rounded-full blur-3xl pointer-events-none`}></div>
+
+            {/* Left Content Area */}
+            <div className="lg:col-span-7 relative z-10">
+              <span className="text-xs font-black uppercase tracking-widest text-rose-500 mb-2 block">
+                {current.subtitle}
+              </span>
+              
+              <h3 className="text-2xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
+                {current.headline}
+              </h3>
+
+              <p className="text-slate-600 font-medium text-base md:text-lg leading-relaxed mb-6">
+                {current.description}
+              </p>
+
+              {/* Action Button */}
+              <button
+                onClick={() => onSelectTopic(current.id)}
+                className={`bg-gradient-to-r ${current.accentGradient} text-white font-black text-sm px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2`}
+              >
+                <span>Iss Feeling Ke Bare Me Baat Karo</span>
+                <span className="material-symbols-outlined text-lg">arrow_forward</span>
+              </button>
+            </div>
+
+            {/* Right Side: Live Listener Sanctuary Pod */}
+            <div className="lg:col-span-5 bg-slate-50 rounded-2xl p-6 border border-slate-200/80 relative z-10 flex flex-col justify-between h-full">
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src={current.avatar}
+                  alt={current.listener}
+                  className="w-14 h-14 rounded-full object-cover border-2 border-rose-400 shadow-md"
+                />
+                <div>
+                  <h4 className="font-black text-slate-900 text-base">{current.listener}</h4>
+                  <p className="text-xs font-bold text-rose-600">{current.listenerRole}</p>
+                  <span className="inline-flex items-center gap-1 text-[10px] font-extrabold text-emerald-600 mt-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Online & Ready To Listen
+                  </span>
                 </div>
-                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${item.badgeBg}`}>
-                  {item.pill}
-                </span>
               </div>
 
-              {/* Card Content */}
-              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors mb-2">
-                {item.title}
-              </h3>
-              <p className="text-xs font-bold text-rose-500 uppercase tracking-wider mb-4">
-                {item.subtitle}
-              </p>
-              <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                {item.description}
-              </p>
-            </div>
+              <blockquote className="italic text-slate-700 text-sm leading-relaxed bg-white p-4 rounded-xl border border-slate-200/60 shadow-xs mb-4">
+                {current.quote}
+              </blockquote>
 
-            {/* Action Footer */}
-            <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-rose-600 text-sm font-bold">
-              <span>Is feeling ke bare me baat karo</span>
-              <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
+              <div className="flex items-center justify-between text-xs font-bold text-slate-500 pt-2 border-t border-slate-200/60">
+                <span className="flex items-center gap-1">
+                  <span className="material-symbols-outlined text-sm text-rose-500">lock</span>
+                  100% Confidential
+                </span>
+                <span className="text-rose-600 font-extrabold">Free 1st Session</span>
+              </div>
             </div>
           </motion.div>
-        ))}
+        </AnimatePresence>
       </div>
     </section>
   );

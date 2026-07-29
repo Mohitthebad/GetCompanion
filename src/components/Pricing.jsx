@@ -1,103 +1,172 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Pricing({ onSelectPlan }) {
-  const [selectedPlanId, setSelectedPlanId] = useState('pack-2');
-
-  const plans = [
+  const listeners = [
     {
-      id: 'pack-1',
-      tag: 'First Step',
-      price: '₹149',
-      desc: 'Single 30-minute introductory conversation.',
-      popular: false
+      id: 'listener-1',
+      name: 'Nisha R',
+      tagline: 'Active listening',
+      rating: '5.0/5',
+      exp: '1 yrs+',
+      avatar: 'https://images.unsplash.com/photo-1618151313441-bc79b11e5090?auto=format&fit=crop&w=200&q=80',
+      status: 'Online',
+      chatRate: '₹10',
+      callRate: '₹15',
+      videoRate: '₹20'
     },
     {
-      id: 'pack-2',
-      tag: 'Continue Talking',
-      price: '₹499',
-      desc: '5-conversation pack (30 mins each). Most popular.',
-      popular: true
+      id: 'listener-2',
+      name: 'Tara S',
+      tagline: 'Held With Compassion',
+      rating: '5.0/5',
+      exp: '2 yrs+',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+      status: 'Online',
+      chatRate: '₹10',
+      callRate: '₹15',
+      videoRate: '₹20'
     },
     {
-      id: 'pack-3',
-      tag: 'Weekly Rhythm',
-      price: '₹899',
-      desc: '10-conversation pack. Ideal for consistent venting.',
-      popular: false
+      id: 'listener-3',
+      name: 'Sarika P',
+      tagline: 'A Friend Who Listens',
+      rating: '5.0/5',
+      exp: '1 yrs+',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      status: 'Online',
+      chatRate: '₹10',
+      callRate: '₹15',
+      videoRate: '₹20'
     },
     {
-      id: 'pack-4',
-      tag: 'Sanctuary Monthly',
-      price: '₹1,499',
-      desc: 'Unlimited 20-min daily vent sessions. Maximum support.',
-      popular: false
+      id: 'listener-4',
+      name: 'Kaira B',
+      tagline: 'Comfort in Companionship',
+      rating: '5.0/5',
+      exp: '2 yrs+',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      status: 'Online',
+      chatRate: '₹10',
+      callRate: '₹15',
+      videoRate: '₹20'
+    },
+    {
+      id: 'listener-5',
+      name: 'Siya A',
+      tagline: 'Listening With Heart',
+      rating: '5.0/5',
+      exp: '3 yrs+',
+      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+      status: 'Online',
+      chatRate: '₹10',
+      callRate: '₹15',
+      videoRate: '₹20'
+    },
+    {
+      id: 'listener-6',
+      name: 'Meera B',
+      tagline: 'Empathetic conversation',
+      rating: '4.9/5',
+      exp: '6 yrs+',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
+      status: 'Online',
+      chatRate: '₹10',
+      callRate: '₹15',
+      videoRate: '₹20'
     }
   ];
 
-  const handleChoose = (plan) => {
-    setSelectedPlanId(plan.id);
+  const handleStartTalk = (listener, mode) => {
     if (onSelectPlan) {
-      onSelectPlan(plan);
+      onSelectPlan({ ...listener, mode });
     }
   };
 
   return (
-    <section className="py-stack-lg px-margin-mobile md:px-margin-desktop bg-slate-50" id="pricing">
-      <div className="max-w-container-max mx-auto">
-        <div className="text-center mb-16 reveal">
-          <span className="text-primary font-bold text-xs uppercase tracking-wider">Flexible Options</span>
-          <h2 className="font-headline-lg text-headline-lg mb-4 mt-1 text-black-bg font-black">Recharge with a Plan</h2>
-          <p className="text-gray-600 font-body-lg font-medium">Choose the rhythm of connection that fits your life.</p>
+    <section className="py-16 px-6 max-w-7xl mx-auto" id="pricing">
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12 reveal">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-extrabold uppercase tracking-widest mb-3">
+          <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+          Verified Companions & Transparent Rates
         </div>
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          Choose a listener & start instantly.
+        </h2>
+        <p className="mt-2 text-base text-slate-600 font-medium max-w-xl mx-auto">
+          Connect via Chat, Audio Call, or Video Call. 100% anonymous & safe.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-          {plans.map((plan) => {
-            const isSelected = selectedPlanId === plan.id;
-            return (
-              <div
-                key={plan.id}
-                onClick={() => handleChoose(plan)}
-                className={`pricing-card p-8 rounded-xxl flex flex-col h-full cursor-pointer transition-all ${
-                  plan.popular
-                    ? 'bg-black-bg text-white shadow-2xl border-2 border-primary relative'
-                    : 'bg-white text-black-bg shadow-sm border border-gray-200 hover:border-secondary'
-                } ${isSelected && !plan.popular ? 'ring-2 ring-primary bg-orange-50/20' : ''}`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white font-black text-xs px-4 py-1 rounded-full uppercase tracking-wider shadow-md">
-                    Most Popular
-                  </div>
-                )}
-                <h3 className={`font-bold text-xs uppercase tracking-wider mb-2 ${plan.popular ? 'text-secondary' : 'text-primary'}`}>{plan.tag}</h3>
-                <div className="text-headline-lg font-black mb-4">{plan.price}</div>
-                <p className={`font-body-md mb-6 flex-grow font-medium ${plan.popular ? 'text-slate-300' : 'text-gray-600'}`}>{plan.desc}</p>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleChoose(plan);
-                  }}
-                  className={`w-full font-bold text-sm py-3 rounded-full transition-all ${
-                    plan.popular || isSelected
-                      ? 'bg-primary text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
-                      : 'border-2 border-secondary text-secondary hover:bg-blue-50'
-                  }`}
-                >
-                  {isSelected ? 'Selected' : 'Choose Pack'}
-                </button>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-12 text-center reveal">
-          <button
-            onClick={() => onSelectPlan && onSelectPlan(plans[1])}
-            className="text-black-bg font-bold text-sm inline-flex items-center gap-2 hover:text-primary transition-colors"
+      {/* Grid of Listener Cards (Exact Match to User Reference Screenshot) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+        {listeners.map((l) => (
+          <div
+            key={l.id}
+            className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
           >
-            <span>View All Conversation Plans</span>
-            <span className="material-symbols-outlined">arrow_forward</span>
-          </button>
-        </div>
+            {/* Top Profile Header */}
+            <div className="flex items-start gap-3.5 mb-5">
+              <img
+                src={l.avatar}
+                alt={l.name}
+                className="w-16 h-16 rounded-full object-cover shrink-0 border border-slate-100 shadow-sm"
+              />
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-1 mb-0.5">
+                  <h3 className="font-black text-base text-slate-900 truncate">
+                    {l.name}
+                  </h3>
+                  <span className="shrink-0 bg-emerald-50 text-emerald-600 border border-emerald-200/80 text-[10px] font-black px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    {l.status}
+                  </span>
+                </div>
+
+                <p className="text-xs font-medium text-slate-500 truncate mb-1">
+                  {l.tagline}
+                </p>
+
+                <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
+                  <div className="flex text-amber-400 text-xs">
+                    ★★★★★
+                  </div>
+                  <span>{l.rating}</span>
+                  <span className="text-slate-400 font-normal">|</span>
+                  <span className="text-slate-500 font-medium">{l.exp}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom 3 Action Pills: Chat (Yellow), Call (Blue), Video (Pink) */}
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                onClick={() => handleStartTalk(l, 'chat')}
+                className="py-2 px-2.5 rounded-full border border-amber-300/80 bg-amber-50/50 hover:bg-amber-100 text-slate-900 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs"
+              >
+                <span className="w-5 h-5 rounded-full bg-amber-400 text-white flex items-center justify-center text-[10px]">💬</span>
+                <span>{l.chatRate}</span>
+              </button>
+
+              <button
+                onClick={() => handleStartTalk(l, 'audio')}
+                className="py-2 px-2.5 rounded-full border border-blue-300/80 bg-blue-50/50 hover:bg-blue-100 text-slate-900 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs"
+              >
+                <span className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px]">📞</span>
+                <span>{l.callRate}</span>
+              </button>
+
+              <button
+                onClick={() => handleStartTalk(l, 'video')}
+                className="py-2 px-2.5 rounded-full border border-pink-300/80 bg-pink-50/50 hover:bg-pink-100 text-slate-900 font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-2xs"
+              >
+                <span className="w-5 h-5 rounded-full bg-pink-500 text-white flex items-center justify-center text-[10px]">📹</span>
+                <span>{l.videoRate}</span>
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

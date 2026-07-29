@@ -5,8 +5,10 @@ export default function Logo({ className = 'h-10', isDark = false }) {
     <div className={`inline-flex items-center select-none ${className}`}>
       <img
         src="/logo.png"
-        alt="Get Companion Logo"
-        className="h-full w-auto object-contain max-h-12"
+        alt="Get Companion"
+        className={`h-full w-auto object-contain max-h-12 ${
+          isDark ? 'brightness-0 invert' : ''
+        }`}
       />
     </div>
   );

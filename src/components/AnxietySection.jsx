@@ -1,139 +1,156 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AnxietySection({ onSelectTopic }) {
-  const anxietyTriggers = [
+  const [activeTrigger, setActiveTrigger] = useState(0);
+
+  const triggers = [
     {
       id: 'late-night',
-      title: 'Late Night Overthinking (2 AM)',
-      subtitle: 'Jab duniya so rahi ho par dimaag me shor ho',
-      desc: 'Purani batein replay ho rahi hain ya kal ki tension sata rahi hai? Ek caring human listener aapke sath awake hai.',
-      icon: 'bedtime',
-      tag: '2 AM Thoughts',
-      color: 'amber'
+      label: '🌙 2 AM Overthinking',
+      title: 'Late Night Racing Thoughts',
+      subtitle: 'Duniya so rahi hai par dimaag me shor hai',
+      desc: 'Purani yaadein replay ho rahi hain? Ek listener aapke sath 2 AM awake hai.',
+      badge: '2 AM Support',
+      freq: 'High Noise',
+      waveColor: 'text-amber-400',
+      bgTag: 'bg-amber-500/20 text-amber-300 border-amber-500/40'
     },
     {
       id: 'racing-thoughts',
-      title: 'Racing Mind & Anxiety',
-      subtitle: 'Jab hazar sawal ek sath dimaag me chalte hain',
-      desc: 'Anxiety jab focus karna namumkin bana de, tab hum saath milkar dimaag ka shor kam karte hain, step by step.',
-      icon: 'psychology',
-      tag: 'Mental Overwhelm',
-      color: 'indigo'
+      label: '🧠 Racing Mind',
+      title: 'Mental Overwhelm & Anxiety',
+      subtitle: 'Hazar sawal ek sath dimaag me chal rahe hain',
+      desc: 'Dimaag ka shor kam karte hain, ek calm breath ke sath.',
+      badge: 'Panic Relief',
+      freq: 'Medium Noise',
+      waveColor: 'text-indigo-400',
+      bgTag: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40'
     },
     {
       id: 'life-transitions',
-      title: 'Future Ki Tension & Uncertainty',
-      subtitle: 'Jobs, relationships ya life shifts ka dar',
-      desc: 'Aane wale kal ka dar ya heavy heart? Apni worry kisi aise ke sath share karo jo bina judgment ke dhyan se sune.',
-      icon: 'explore',
-      tag: 'Future Worry',
-      color: 'sky'
+      label: '🧭 Future Tension',
+      title: 'Uncertainty & Life Shift Fear',
+      subtitle: 'Jobs, relationships ya future ka dar',
+      desc: 'Future ki worry untangle karo listener ke saath.',
+      badge: 'Future Relief',
+      freq: 'Slowing Down',
+      waveColor: 'text-sky-400',
+      bgTag: 'bg-sky-500/20 text-sky-300 border-sky-500/40'
     }
   ];
 
+  const current = triggers[activeTrigger];
+
   return (
-    <section id="anxiety" className="py-20 px-6 max-w-7xl mx-auto relative">
-      {/* Step Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs font-extrabold uppercase tracking-widest mb-4">
+    <section id="anxiety" className="py-16 px-6 max-w-7xl mx-auto relative">
+      {/* Header */}
+      <div className="text-center max-w-3xl mx-auto mb-10 reveal">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs font-extrabold uppercase tracking-widest mb-3">
           <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
-          Step 2: Dimaag Ki Overthinking Calm Karo
+          Step 2: Overthinking Calm Karo
         </div>
         <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Next, apni racing anxiety ko untangle karo.
+          Racing anxiety ko untangle karo.
         </h2>
-        <p className="mt-4 text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-          Jab aapki feelings express ho jati hain, tab overthinking halki hone lagti hai. 
-          Aaiye dimaag ke iss shor ko calm karte hain.
+        <p className="mt-2 text-base text-slate-600 font-medium max-w-xl mx-auto">
+          Choose an anxiety trigger to calm your mind.
         </p>
       </div>
 
-      {/* Main Interactive Anxiety De-escalation Feature Banner */}
-      <div className="mb-12 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden border border-indigo-900/50 reveal">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-          <div className="lg:col-span-7">
-            <span className="text-indigo-400 font-extrabold text-xs uppercase tracking-widest block mb-2">
-              Anxiety Relief Strategy
-            </span>
-            <h3 className="text-2xl md:text-4xl font-extrabold text-white leading-tight mb-4">
-              "Mera dimaag off nahi ho raha, aur samajh nahi aa raha kya karoon."
-            </h3>
-            <p className="text-slate-300 text-base leading-relaxed mb-6 font-medium">
-              Raat ke 2 baje poori life fix karne ki zaroorat nahi hai. Bas ek grounding conversation chahiye taaki dimaag shaant ho sake.
-            </p>
-            <button
-              onClick={() => onSelectTopic('late-night')}
-              className="bg-indigo-500 hover:bg-indigo-400 text-white font-extrabold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-indigo-500/25 transition-all active:scale-95 flex items-center gap-2"
-            >
-              <span className="material-symbols-outlined text-lg">graphic_eq</span>
-              <span>Meri Overthinking Calm Karo</span>
-            </button>
-          </div>
-
-          <div className="lg:col-span-5 bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-xs font-bold text-slate-300">Live Anxiety De-escalation</span>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="bg-white/10 rounded-xl p-3 text-xs text-indigo-200 flex items-start gap-2">
-                <span className="material-symbols-outlined text-sm text-indigo-400">forum</span>
-                <span><strong>Pehle:</strong> "Bohot tension lag rahi hai, neend nahi aa rahi."</span>
-              </div>
-              <div className="bg-indigo-500/20 border border-indigo-400/30 rounded-xl p-3 text-xs text-white flex items-start gap-2">
-                <span className="material-symbols-outlined text-sm text-emerald-400">check_circle</span>
-                <span><strong>10 Mins Baad:</strong> Breathing normal, heavy thoughts gone, quiet mind.</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Interactive Trigger Selector Tabs */}
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-10 max-w-4xl mx-auto reveal">
+        {triggers.map((item, idx) => (
+          <button
+            key={item.id}
+            onClick={() => setActiveTrigger(idx)}
+            className={`px-6 py-3 rounded-full text-sm font-extrabold transition-all duration-300 flex items-center gap-2 ${
+              activeTrigger === idx
+                ? 'bg-indigo-600 text-white shadow-xl scale-105 ring-4 ring-indigo-500/20'
+                : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 shadow-sm'
+            }`}
+          >
+            <span>{item.label}</span>
+          </button>
+        ))}
       </div>
 
-      {/* Grid of Anxiety Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
-        {anxietyTriggers.map((item, idx) => (
+      {/* Main Interactive Overthinking Console (Replaces Grid Cards) */}
+      <div className="max-w-5xl mx-auto bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden border border-indigo-900/50 reveal">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <AnimatePresence mode="wait">
           <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.12 }}
-            onClick={() => onSelectTopic(item.id)}
-            className="group relative bg-white rounded-3xl p-8 border border-slate-200/80 hover:border-indigo-300 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
+            key={current.id}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10"
           >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="p-3 rounded-2xl bg-indigo-50 text-indigo-600 border border-indigo-100">
-                  <span className="material-symbols-outlined text-2xl block">{item.icon}</span>
+            {/* Left Console Content */}
+            <div className="lg:col-span-7">
+              <span className={`inline-flex items-center gap-2 text-xs font-black px-3 py-1 rounded-full border mb-4 ${current.bgTag}`}>
+                <span className="material-symbols-outlined text-sm">graphic_eq</span>
+                <span>{current.badge} • {current.freq}</span>
+              </span>
+
+              <h3 className="text-2xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
+                {current.title}
+              </h3>
+              
+              <p className="text-indigo-200 font-bold text-sm uppercase tracking-wider mb-4">
+                {current.subtitle}
+              </p>
+
+              <p className="text-slate-300 text-base leading-relaxed mb-8 font-medium">
+                {current.desc}
+              </p>
+
+              <button
+                onClick={() => onSelectTopic(current.id)}
+                className="bg-indigo-500 hover:bg-indigo-400 text-white font-extrabold text-sm px-8 py-4 rounded-full shadow-lg shadow-indigo-500/25 transition-all active:scale-95 flex items-center gap-2"
+              >
+                <span className="material-symbols-outlined text-lg">graphic_eq</span>
+                <span>Iss Anxiety Ko Calm Karo Now</span>
+              </button>
+            </div>
+
+            {/* Right Side: Interactive Mind De-escalation Wave Regulator */}
+            <div className="lg:col-span-5 bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 flex flex-col justify-between h-full gap-6">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-extrabold text-slate-300">Live Sound Wave Frequency</span>
+                  <span className="text-xs font-extrabold text-emerald-400 flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Listener Online
+                  </span>
                 </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700">
-                  {item.tag}
-                </span>
+
+                {/* Animated Equalizer Waves */}
+                <div className="flex items-center justify-center gap-1.5 h-20 bg-slate-950/60 rounded-xl p-4 border border-white/5">
+                  <span className="w-1.5 bg-indigo-400 h-full animate-bounce rounded-full" style={{ animationDuration: '0.6s' }}></span>
+                  <span className="w-1.5 bg-indigo-500 h-2/3 animate-bounce rounded-full" style={{ animationDuration: '0.8s' }}></span>
+                  <span className="w-1.5 bg-rose-400 h-4/5 animate-bounce rounded-full" style={{ animationDuration: '0.5s' }}></span>
+                  <span className="w-1.5 bg-amber-400 h-1/2 animate-bounce rounded-full" style={{ animationDuration: '0.9s' }}></span>
+                  <span className="w-1.5 bg-emerald-400 h-full animate-bounce rounded-full" style={{ animationDuration: '0.7s' }}></span>
+                  <span className="w-1.5 bg-indigo-400 h-3/4 animate-bounce rounded-full" style={{ animationDuration: '0.4s' }}></span>
+                </div>
               </div>
 
-              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
-                {item.title}
-              </h3>
-              <p className="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-4">
-                {item.subtitle}
-              </p>
-              <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                {item.desc}
-              </p>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-indigo-600 text-sm font-bold">
-              <span>Iss anxiety ko shaant karo</span>
-              <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
+              <div className="space-y-2 text-xs">
+                <div className="p-3 bg-white/10 rounded-xl text-indigo-200 flex items-start gap-2">
+                  <span className="material-symbols-outlined text-sm text-amber-400">warning</span>
+                  <span><strong>Mind State:</strong> Thoughts spiraling rapidly.</span>
+                </div>
+                <div className="p-3 bg-emerald-500/20 border border-emerald-400/30 rounded-xl text-white flex items-start gap-2">
+                  <span className="material-symbols-outlined text-sm text-emerald-400">check_circle</span>
+                  <span><strong>Outcome:</strong> 10 mins me breathing normal, racing thoughts quiet down.</span>
+                </div>
+              </div>
             </div>
           </motion.div>
-        ))}
+        </AnimatePresence>
       </div>
     </section>
   );

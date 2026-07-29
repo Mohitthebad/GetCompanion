@@ -13,8 +13,8 @@ export default function Hero({ onOpenChat }) {
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 16;
-    const y = (clientY / innerHeight - 0.5) * -16;
+    const x = (clientX / innerWidth - 0.5) * 12;
+    const y = (clientY / innerHeight - 0.5) * -12;
     setTilt({ x, y });
   };
 
@@ -24,7 +24,7 @@ export default function Hero({ onOpenChat }) {
 
     const playAudio = async () => {
       try {
-        audio.volume = 0.5;
+        audio.volume = 0.4;
         await audio.play();
         setIsPlaying(true);
         setIsMuted(false);
@@ -77,161 +77,154 @@ export default function Hero({ onOpenChat }) {
       name: 'Ananya Sharma',
       role: 'Heartache & Healing Listener',
       avatar: 'https://images.unsplash.com/photo-1618151313441-bc79b11e5090?auto=format&fit=crop&w=200&q=80',
-      status: 'Available',
-      quote: '"I know how quiet rooms feel late at night. Let\'s talk."',
-      color: '#FF8CB7'
+      status: 'Available'
     },
     {
       name: 'Arjun Mehta',
       role: '3 AM Loneliness Companion',
       avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
-      status: 'Online',
-      quote: '"No heavy expectations. Just warm, supportive human company."',
-      color: '#0066FF'
+      status: 'Online'
     },
     {
       name: 'Meera Kapoor',
       role: 'Gentle Venting Support',
       avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
-      status: 'Listening',
-      quote: '"Vent freely. Your feelings are 100% valid here."',
-      color: '#FF5500'
+      status: 'Listening'
     }
   ];
-
-  const wordsPart1 = ["Dil", "Toota", "Hai."];
-  const wordsPart2 = ["Chalo,", "Khud", "Se", "Dobara", "Milte", "Hai."];
 
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative pt-6 pb-20 px-margin-mobile md:px-margin-desktop overflow-hidden bg-gradient-to-b from-orange-50/40 via-white to-[#FDFBF7]"
+      className="relative pt-8 pb-20 px-6 max-w-7xl mx-auto overflow-hidden"
     >
-      {/* Audio element for /audio.mp3 */}
+      {/* Audio element */}
       <audio ref={audioRef} src="/audio.mp3" loop preload="auto" />
 
-      {/* Animated Floating 3D Background Icons */}
-      <motion.div
-        animate={{ y: [0, -12, 0], rotate: [0, 5, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-12 left-10 pointer-events-none opacity-20 text-[#FF8CB7] hidden lg:block"
-      >
-        <span className="material-symbols-outlined text-5xl">favorite</span>
-      </motion.div>
+      {/* Ambient Glows */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-orange-400/20 via-pink-400/15 to-rose-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <motion.div
-        animate={{ y: [0, 14, 0], rotate: [0, -6, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute top-1/3 right-12 pointer-events-none opacity-20 text-[#0066FF] hidden lg:block"
-      >
-        <span className="material-symbols-outlined text-5xl">forum</span>
-      </motion.div>
-
-      {/* Ambient Light Accents */}
-      <div className="absolute top-0 right-1/4 w-[550px] h-[550px] bg-gradient-to-br from-orange-400/20 via-pink-400/15 to-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div className="max-w-container-max mx-auto grid lg:grid-cols-12 gap-12 items-center pt-6 relative z-10">
+      <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* Left Column: Word-by-Word Motion Reveal */}
+        {/* Left Column: Clean Typography & 1-Tap Selector */}
         <div className="lg:col-span-7">
           
-          {/* Main Headline with Blur-to-Clear Word-by-Word Motion */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-black-bg tracking-tight leading-[1.14] mb-6">
-            <span className="inline-flex flex-wrap gap-x-3">
-              {wordsPart1.map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </span>
+          {/* Trust Pill */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200/80 text-rose-600 text-xs font-extrabold mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+            <span>100% Anonymous & Confidential • Free 1st Session</span>
+          </motion.div>
 
-            <span className="block mt-2 font-black bg-gradient-to-r from-[#FF5500] via-[#FF7700] to-[#0066FF] bg-clip-text text-transparent">
-              <span className="inline-flex flex-wrap gap-x-3">
-                {wordsPart2.map((word, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ duration: 0.6, delay: 0.4 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                    className="inline-block"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </span>
+          {/* Clean High-Impact Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.12] mb-6"
+          >
+            <span>Dil Toota Hai.</span>
+            <span className="block mt-2 bg-gradient-to-r from-orange-500 via-rose-500 to-pink-600 bg-clip-text text-transparent">
+              Chalo, Khud Se Dobara Milte Hain.
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1, ease: 'easeOut' }}
-            className="text-lg md:text-xl text-gray-700 font-semibold mb-8 leading-relaxed max-w-xl"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-base sm:text-lg text-slate-600 font-medium mb-8 leading-relaxed max-w-xl"
           >
-            Silent breakups, heavy heart ya late night overthinking? Jab 3 AM pe rooms shaant aur dimaag loud ho jata hai—connect karo verified listeners ke sath jo bina kisi judgment ke aapki baat sunte hain.
+            Dil ki baat, bina kisi judgment ke. 60 seconds me verified listener se connect ho jao.
           </motion.p>
 
-          {/* Primary Magnetic Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 1.3 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 mb-10"
-          >
-            <button
-              onClick={onOpenChat}
-              className="btn-glow bg-gradient-to-r from-[#FF5500] to-[#FF7700] text-white font-black text-lg px-8 py-4 rounded-full shadow-lg shadow-orange-500/25 hover:shadow-2xl hover:shadow-orange-500/40 active:scale-95 transition-all flex items-center justify-center gap-3 group"
-            >
-              <span>Kisi Se Dil Ki Baat Karo</span>
-              <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
-                favorite
-              </span>
-            </button>
-          </motion.div>
-
-          {/* Live Online Listeners Proof Bar */}
+          {/* 1-Tap Interactive Mood Engagement Bar */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-            className="flex items-center gap-4 p-3.5 bg-white/90 rounded-2xl border border-gray-100 shadow-sm backdrop-blur-md w-fit"
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mb-8 p-5 bg-white rounded-3xl border border-slate-200/80 shadow-xl max-w-xl"
+          >
+            <p className="text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+              <span>Aaj Kaisa Feel Kar Rahe Ho? (Tap To Connect Instantly)</span>
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button
+                onClick={() => onOpenChat('heartache')}
+                className="p-3 rounded-2xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+              >
+                <span className="text-lg">💔</span>
+                <span>Dil Toota</span>
+              </button>
+
+              <button
+                onClick={() => onOpenChat('late-night')}
+                className="p-3 rounded-2xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+              >
+                <span className="text-lg">🌙</span>
+                <span>2 AM Stress</span>
+              </button>
+
+              <button
+                onClick={() => onOpenChat('loneliness')}
+                className="p-3 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+              >
+                <span className="text-lg">🌌</span>
+                <span>Akela Lag Raha</span>
+              </button>
+
+              <button
+                onClick={() => onOpenChat('emotional-vent')}
+                className="p-3 rounded-2xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-700 font-extrabold text-xs text-center transition-all active:scale-95 flex flex-col items-center gap-1.5 shadow-2xs"
+              >
+                <span className="text-lg">🍃</span>
+                <span>Vent Karna</span>
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Active Proof Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="flex items-center gap-4 p-3 px-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm w-fit"
           >
             <div className="flex -space-x-2 overflow-hidden">
               <img
-                className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                src="https://images.unsplash.com/photo-1618151313441-bc79b11e5090?auto=format&fit=crop&w=120&q=80"
+                className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                src={companions[0].avatar}
                 alt="Ananya"
               />
               <img
-                className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80"
+                className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                src={companions[1].avatar}
                 alt="Arjun"
               />
               <img
-                className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80"
+                className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                src={companions[2].avatar}
                 alt="Meera"
               />
             </div>
             <div className="text-xs">
-              <div className="font-extrabold text-black-bg flex items-center gap-1.5">
+              <div className="font-black text-slate-900 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>1,200+ Verified Listeners Active</span>
               </div>
-              <p className="text-gray-500 font-medium">Free 1st session • 100% Anonymous</p>
             </div>
           </motion.div>
 
         </div>
 
-        {/* Right Column: Interactive Live Sanctuary Orbit & Audio Waveform Feature */}
+        {/* Right Column: Clean Interactive Sanctuary Core */}
         <div className="lg:col-span-5 relative flex justify-center items-center">
           
           <motion.div
@@ -240,102 +233,98 @@ export default function Hero({ onOpenChat }) {
               transformStyle: 'preserve-3d',
             }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="relative w-full max-w-[420px] aspect-square flex items-center justify-center"
+            className="relative w-full max-w-[380px] aspect-square flex items-center justify-center"
           >
             
-            {/* Outer Glowing Orbital Rings */}
-            <div className="absolute inset-0 rounded-full border border-orange-200/50 animate-spin-slow pointer-events-none"></div>
-            <div className="absolute inset-8 rounded-full border border-pink-200/60 animate-reverse-spin pointer-events-none"></div>
-            <div className="absolute inset-16 rounded-full border border-blue-200/40 pointer-events-none"></div>
+            {/* Outer Orbital Rings */}
+            <div className="absolute inset-0 rounded-full border border-rose-200/60 animate-spin-slow pointer-events-none"></div>
+            <div className="absolute inset-8 rounded-full border border-orange-200/60 pointer-events-none"></div>
 
-            {/* Central Interactive Sanctuary Core Pulse */}
+            {/* Central Interactive Core */}
             <motion.div
-              onClick={onOpenChat}
+              onClick={() => onOpenChat('general')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-20 cursor-pointer w-44 h-44 rounded-full bg-gradient-to-tr from-[#FF5500] via-[#FF7700] to-[#FF8CB7] p-1 shadow-2xl shadow-orange-500/30 flex flex-col items-center justify-center text-white text-center group"
+              className="relative z-20 cursor-pointer w-44 h-44 rounded-full bg-gradient-to-br from-orange-500 via-rose-500 to-pink-500 p-1 shadow-2xl shadow-rose-500/30 flex flex-col items-center justify-center text-white text-center group"
             >
-              <div className="w-full h-full rounded-full bg-black-bg/90 backdrop-blur-md flex flex-col items-center justify-center p-4 transition-colors group-hover:bg-black-bg/80">
-                {/* Heart Pulse Icon */}
-                <span className="material-symbols-outlined text-4xl text-[#FF5500] mb-1 group-hover:scale-125 transition-transform">
+              <div className="w-full h-full rounded-full bg-slate-900/90 backdrop-blur-md flex flex-col items-center justify-center p-4 transition-colors group-hover:bg-slate-900/80">
+                <span className="material-symbols-outlined text-4xl text-rose-400 mb-1 group-hover:scale-125 transition-transform">
                   favorite
                 </span>
                 
-                {/* Live Soundwave Audio Bar Animation */}
-                <div className="flex items-end gap-1 h-5 mb-2">
-                  <span className="w-1 bg-[#FF8CB7] h-full animate-bounce rounded-full" style={{ animationDuration: '0.6s' }}></span>
-                  <span className="w-1 bg-[#0066FF] h-2/3 animate-bounce rounded-full" style={{ animationDuration: '0.9s' }}></span>
-                  <span className="w-1 bg-[#FFCC00] h-4/5 animate-bounce rounded-full" style={{ animationDuration: '0.5s' }}></span>
-                  <span className="w-1 bg-[#FF5500] h-full animate-bounce rounded-full" style={{ animationDuration: '0.7s' }}></span>
+                <div className="flex items-end gap-1 h-4 mb-2">
+                  <span className="w-1 bg-rose-400 h-full animate-bounce rounded-full" style={{ animationDuration: '0.6s' }}></span>
+                  <span className="w-1 bg-orange-400 h-2/3 animate-bounce rounded-full" style={{ animationDuration: '0.9s' }}></span>
+                  <span className="w-1 bg-amber-400 h-4/5 animate-bounce rounded-full" style={{ animationDuration: '0.5s' }}></span>
                 </div>
 
                 <span className="text-xs font-black text-white tracking-wide uppercase">
-                  Tap to Connect Live
+                  Tap to Connect
                 </span>
-                <span className="text-[10px] text-gray-400 font-medium mt-0.5">
-                  100% Anonymous
+                <span className="text-[10px] text-slate-300 font-medium mt-0.5">
+                  60s Match Time
                 </span>
               </div>
             </motion.div>
 
-            {/* Orbiting Companion 1 (Ananya - Top Left) */}
+            {/* Floating Listener 1 */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               onClick={() => { setActiveCompanion(0); onOpenChat(); }}
-              className="absolute top-2 left-0 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-pink-100 flex items-center gap-3 cursor-pointer z-30 hover:scale-105 transition-transform"
+              className="absolute top-2 left-0 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-rose-100 flex items-center gap-3 cursor-pointer z-30 hover:scale-105 transition-transform"
             >
               <img
                 src={companions[0].avatar}
                 alt={companions[0].name}
-                className="w-10 h-10 rounded-full object-cover border-2 border-[#FF8CB7]"
+                className="w-9 h-9 rounded-full object-cover border-2 border-rose-400"
               />
               <div className="text-left">
-                <p className="text-xs font-extrabold text-black-bg">{companions[0].name}</p>
-                <p className="text-[10px] text-[#D94680] font-bold">{companions[0].role}</p>
+                <p className="text-xs font-black text-slate-900">{companions[0].name}</p>
+                <p className="text-[10px] text-rose-500 font-bold">{companions[0].role}</p>
               </div>
             </motion.div>
 
-            {/* Orbiting Companion 2 (Arjun - Right Center) */}
+            {/* Floating Listener 2 */}
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
               onClick={() => { setActiveCompanion(1); onOpenChat(); }}
-              className="absolute top-1/3 -right-20 md:-right-28 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-blue-100 flex items-center gap-3 cursor-pointer z-30 hover:scale-105 transition-transform"
+              className="absolute top-1/3 -right-16 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-indigo-100 flex items-center gap-3 cursor-pointer z-30 hover:scale-105 transition-transform"
             >
               <img
                 src={companions[1].avatar}
                 alt={companions[1].name}
-                className="w-10 h-10 rounded-full object-cover border-2 border-[#0066FF]"
+                className="w-9 h-9 rounded-full object-cover border-2 border-indigo-400"
               />
               <div className="text-left">
-                <p className="text-xs font-extrabold text-black-bg">{companions[1].name}</p>
-                <p className="text-[10px] text-[#0066FF] font-bold">{companions[1].role}</p>
+                <p className="text-xs font-black text-slate-900">{companions[1].name}</p>
+                <p className="text-[10px] text-indigo-500 font-bold">{companions[1].role}</p>
               </div>
             </motion.div>
 
-            {/* Orbiting Companion 3 (Meera - Bottom Left) */}
+            {/* Floating Listener 3 */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               onClick={() => { setActiveCompanion(2); onOpenChat(); }}
-              className="absolute bottom-2 left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-orange-100 flex items-center gap-3 cursor-pointer z-30 hover:scale-105 transition-transform"
+              className="absolute bottom-2 left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-amber-100 flex items-center gap-3 cursor-pointer z-30 hover:scale-105 transition-transform"
             >
               <img
                 src={companions[2].avatar}
                 alt={companions[2].name}
-                className="w-10 h-10 rounded-full object-cover border-2 border-[#FF5500]"
+                className="w-9 h-9 rounded-full object-cover border-2 border-amber-400"
               />
               <div className="text-left">
-                <p className="text-xs font-extrabold text-black-bg">{companions[2].name}</p>
-                <p className="text-[10px] text-[#FF5500] font-bold">{companions[2].role}</p>
+                <p className="text-xs font-black text-slate-900">{companions[2].name}</p>
+                <p className="text-[10px] text-amber-600 font-bold">{companions[2].role}</p>
               </div>
             </motion.div>
 
-            {/* Floating Live Response Time Pill */}
-            <div className="absolute -bottom-4 right-10 bg-black-bg/90 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full border border-black-border text-[11px] font-bold flex items-center gap-1.5 shadow-lg z-20">
+            {/* Wait time badge */}
+            <div className="absolute -bottom-4 right-10 bg-slate-900 text-white px-3.5 py-1.5 rounded-full border border-slate-700 text-[11px] font-extrabold flex items-center gap-1.5 shadow-lg z-20">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <span>Avg Wait Time: &lt; 30 Seconds</span>
+              <span>Wait Time: &lt; 30s</span>
             </div>
 
           </motion.div>
@@ -344,37 +333,19 @@ export default function Hero({ onOpenChat }) {
 
       </div>
 
-      {/* Mute Button */}
+      {/* Ambient Audio Toggle */}
       <div className="absolute bottom-4 right-4 md:right-8 z-30 flex items-center">
         <button
           onClick={toggleMute}
-          title={isMuted || !isPlaying ? "Click to play ambient audio" : "Click to mute ambient audio"}
-          className="group flex items-center gap-2.5 bg-black-bg/90 backdrop-blur-md text-white hover:bg-black-bg px-4 py-2.5 rounded-full border border-black-border shadow-xl hover:border-primary transition-all active:scale-95"
+          className="flex items-center gap-2.5 bg-slate-900 text-white hover:bg-slate-800 px-4 py-2.5 rounded-full border border-slate-700 shadow-xl transition-all active:scale-95"
         >
           {!isMuted && isPlaying ? (
-            <div className="flex items-end gap-0.5 h-4 px-0.5">
-              <span className="w-1 bg-[#FF8CB7] h-full animate-bounce rounded-full" style={{ animationDuration: '0.6s' }}></span>
-              <span className="w-1 bg-[#0066FF] h-2/3 animate-bounce rounded-full" style={{ animationDuration: '0.9s' }}></span>
-              <span className="w-1 bg-[#FF5500] h-4/5 animate-bounce rounded-full" style={{ animationDuration: '0.4s' }}></span>
-            </div>
+            <span className="material-symbols-outlined text-rose-400 text-lg">volume_up</span>
           ) : (
-            <span className="material-symbols-outlined text-primary text-lg">
-              volume_off
-            </span>
+            <span className="material-symbols-outlined text-slate-400 text-lg">volume_off</span>
           )}
-
-          <span className="text-xs font-bold tracking-wide">
-            {!isMuted && isPlaying ? (
-              <span className="flex items-center gap-1.5">
-                <span>Soothing Ambience</span>
-                <span className="text-[10px] text-gray-400 group-hover:text-primary">(Mute)</span>
-              </span>
-            ) : (
-              <span className="flex items-center gap-1.5 text-[#FF5500]">
-                <span>Play Sound</span>
-                <span className="material-symbols-outlined text-xs">volume_up</span>
-              </span>
-            )}
+          <span className="text-xs font-extrabold">
+            {!isMuted && isPlaying ? 'Ambience Playing' : 'Play Sound'}
           </span>
         </button>
       </div>
