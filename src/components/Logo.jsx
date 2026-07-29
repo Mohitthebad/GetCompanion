@@ -6,9 +6,7 @@ export default function Logo({ className = 'h-10', isDark = false }) {
       <img
         src="/logo.png"
         alt="Get Companion"
-        className={`h-full w-auto object-contain max-h-12 ${
-          isDark ? 'brightness-0 invert' : ''
-        }`}
+        className="h-full w-auto object-contain max-h-12"
       />
     </div>
   );
