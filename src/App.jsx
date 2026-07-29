@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Recognition from './components/Recognition';
-import BentoGrid from './components/BentoGrid';
-import WhatIsAndIsNot from './components/WhatIsAndIsNot';
+import EmotionsSection from './components/EmotionsSection';
+import AnxietySection from './components/AnxietySection';
+import RelaxedSection from './components/RelaxedSection';
 import HowItWorks from './components/HowItWorks';
-import Safety from './components/Safety';
-import Moments from './components/Moments';
-import Pricing from './components/Pricing';
 import HumanVsAI from './components/HumanVsAI';
-import Testimonials from './components/Testimonials';
+import Safety from './components/Safety';
+import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
@@ -57,11 +55,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-surface flex flex-col font-body-md selection:bg-primary selection:text-white relative">
-      {/* Loading Screen with Broken Heart -> Whole Heart Animation */}
+    <div className="min-h-screen bg-slate-50/50 text-slate-900 flex flex-col font-sans selection:bg-rose-500 selection:text-white relative">
+      {/* Loading Screen */}
       <LoadingScreen />
 
-      {/* Aurora Mesh Gradient Background with Floating Particles */}
+      {/* Aurora Mesh Gradient Background */}
       <AuroraBackground />
 
       {/* Custom Soft Glowing Cursor */}
@@ -70,19 +68,39 @@ export default function App() {
       {/* Fixed Navigation Bar */}
       <Header onOpenChat={() => handleOpenChatWithTopic('general')} />
 
-      {/* Main Content Area */}
-      <main className="pt-20 overflow-x-hidden flex-1 relative z-10">
+      {/* Main Content Area: Emotions -> Anxiety -> Relaxed Flow */}
+      <main className="pt-20 overflow-x-hidden flex-1 relative z-10 space-y-12">
+        {/* Welcome Hero */}
         <Hero onOpenChat={() => handleOpenChatWithTopic('general')} />
-        <Recognition />
-        <BentoGrid onSelectTopic={handleOpenChatWithTopic} />
-        <WhatIsAndIsNot />
+
+        {/* Stage 1: Emotions */}
+        <EmotionsSection onSelectTopic={handleOpenChatWithTopic} />
+
+        {/* Stage 2: Anxiety */}
+        <AnxietySection onSelectTopic={handleOpenChatWithTopic} />
+
+        {/* Stage 3: Relaxed */}
+        <RelaxedSection
+          onSelectTopic={handleOpenChatWithTopic}
+          onOpenChat={() => handleOpenChatWithTopic('general')}
+        />
+
+        {/* How It Works */}
         <HowItWorks onOpenChat={() => handleOpenChatWithTopic('general')} />
-        <Safety />
-        <Moments onSelectTopic={handleOpenChatWithTopic} />
-        <Pricing onSelectPlan={handleSelectPlan} />
+
+        {/* Real Human Empathy vs Cold AI */}
         <HumanVsAI onOpenChat={() => handleOpenChatWithTopic('general')} />
-        <Testimonials />
+
+        {/* Safety & Privacy Guarantee */}
+        <Safety />
+
+        {/* Simple Transparent Pricing */}
+        <Pricing onSelectPlan={handleSelectPlan} />
+
+        {/* Frequently Asked Questions */}
         <FAQ />
+
+        {/* Final CTA Banner */}
         <FinalCTA onOpenChat={() => handleOpenChatWithTopic('general')} />
       </main>
 

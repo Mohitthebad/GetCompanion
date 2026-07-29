@@ -175,7 +175,7 @@ export default function Hero({ onOpenChat }) {
             transition={{ duration: 0.8, delay: 1.1, ease: 'easeOut' }}
             className="text-lg md:text-xl text-gray-700 font-semibold mb-8 leading-relaxed max-w-xl"
           >
-            Healing from a silent goodbye or carrying a heavy heart? When quiet 3 AM rooms get too loud, connect instantly with empathetic human listeners who truly care.
+            Silent breakups, heavy heart ya late night overthinking? Jab 3 AM pe rooms shaant aur dimaag loud ho jata hai—connect karo verified listeners ke sath jo bina kisi judgment ke aapki baat sunte hain.
           </motion.p>
 
           {/* Primary Magnetic Button */}
@@ -189,7 +189,7 @@ export default function Hero({ onOpenChat }) {
               onClick={onOpenChat}
               className="btn-glow bg-gradient-to-r from-[#FF5500] to-[#FF7700] text-white font-black text-lg px-8 py-4 rounded-full shadow-lg shadow-orange-500/25 hover:shadow-2xl hover:shadow-orange-500/40 active:scale-95 transition-all flex items-center justify-center gap-3 group"
             >
-              <span>Talk to Someone Who Listens</span>
+              <span>Kisi Se Dil Ki Baat Karo</span>
               <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
                 favorite
               </span>

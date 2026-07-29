@@ -7,9 +7,9 @@ export default function HowItWorks({ onOpenChat }) {
   const steps = [
     {
       num: '01',
-      title: 'Share How Your Heart Feels',
-      subtitle: 'No judgments or questionnaires',
-      desc: 'Simply select what you are experiencing—whether it is a silent goodbye, 3 AM overthinking, deep loneliness, or just a heavy chest.',
+      title: 'Dil Ki Baat & Feeling Select Karo',
+      subtitle: 'Bina kisi form ya survey ke',
+      desc: 'Bas bataiye aap kaisa feel kar rahe hain—dil me dard hai, 3 AM overthinking ho rahi hai, ya akelepan ka ehsaas hai.',
       color: '#FF8CB7',
       bgTag: 'bg-pink-50 text-[#D94680] border-pink-200',
       icon: 'favorite',
@@ -24,8 +24,8 @@ export default function HowItWorks({ onOpenChat }) {
     {
       num: '02',
       title: 'Instant Matched Empathetic Listener',
-      subtitle: 'Real human warmth in seconds',
-      desc: 'Our algorithm instantly pairs you with a verified, compassionate listener whose life experiences resonate with what you are going through.',
+      subtitle: 'Real human warmth bas 60 seconds me',
+      desc: 'Aapko instant connect kiya jata hai verified, compassionate listener se jo aapke jazbaat samajhta hai.',
       color: '#0066FF',
       bgTag: 'bg-blue-50 text-[#0066FF] border-blue-200',
       icon: 'diversity_3',
@@ -45,9 +45,9 @@ export default function HowItWorks({ onOpenChat }) {
     },
     {
       num: '03',
-      title: 'Connect via Private Chat or Voice',
+      title: 'Connect via Private Chat ya Voice',
       subtitle: '100% Encrypted & Anonymous',
-      desc: 'Choose how you want to connect—text chat or private voice session. Zero identity disclosures, zero logs stored, complete peace of mind.',
+      desc: 'Aap choose karein ki kaise baat karni hai—anonymous text chat ya private voice call. Poori privacy guarantee.',
       color: '#FFCC00',
       bgTag: 'bg-amber-50 text-[#B38F00] border-amber-200',
       icon: 'lock',
@@ -64,9 +64,9 @@ export default function HowItWorks({ onOpenChat }) {
     },
     {
       num: '04',
-      title: 'Ongoing Support & Favorite Listeners',
-      subtitle: 'Your sanctuary whenever needed',
-      desc: 'Bookmark your favorite companions and return whenever quiet nights get overwhelming. Build a routine of being heard.',
+      title: 'Ongoing Support & Sukoon',
+      subtitle: 'Aapka safe sanctuary jab bhi zaroorat ho',
+      desc: 'Apne favorite listeners ko bookmark karein aur jab bhi raat ko akelapan lage, turant connect karein.',
       color: '#FF5500',
       bgTag: 'bg-orange-50 text-[#FF5500] border-orange-200',
       icon: 'verified',
@@ -86,9 +86,9 @@ export default function HowItWorks({ onOpenChat }) {
     <section className="pt-4 pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="how-it-works">
       {/* Header */}
       <div className="text-center mb-6 reveal">
-        <span className="text-[#FF5500] font-bold text-xs uppercase tracking-wider">Storytelling Flow</span>
+        <span className="text-[#FF5500] font-bold text-xs uppercase tracking-wider">Simple Process</span>
         <h2 className="font-headline-lg text-headline-lg mb-2 mt-1 text-black-bg font-black">
-          How Your Healing Journey Unfolds
+          Companion Kaise Kaam Karta Hai?
         </h2>
         <p className="text-gray-600 font-body-lg font-semibold max-w-xl mx-auto">
           A seamless, respectful 4-step path to feeling understood and valued.
