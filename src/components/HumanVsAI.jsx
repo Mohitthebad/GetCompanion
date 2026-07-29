@@ -3,57 +3,56 @@ import React from 'react';
 export default function HumanVsAI({ onOpenChat }) {
   const points = [
     {
-      icon: 'heart_broken',
-      title: 'Real Emotional Resonance',
-      desc: 'Humans understand the ache of a broken promise, a quiet bedroom, and a heavy heart.'
+      icon: 'favorite',
+      title: 'Real Empathy & Heart',
+      desc: 'AI algorithm bullet points de sakta hai, par aapka breakup ya akelapan feel nahi kar sakta.'
     },
     {
-      icon: 'diversity_1',
-      title: 'Shared Vulnerability',
-      desc: 'There is profound healing in knowing the person listening has also loved, lost, and felt alone.'
+      icon: 'record_voice_over',
+      title: 'Real Human Voice',
+      desc: 'Koi robotic script ya sterile advice nahi—bas ek warm insani aawaz.'
     },
     {
-      icon: 'waves',
-      title: 'Comforting Silence & Tone',
-      desc: 'A real human voice offers gentle pauses and genuine warmth that no text-bot can ever mimic.'
+      icon: 'lock',
+      title: '100% Safe & Confidential',
+      desc: 'Zero judgment, zero identity disclosure. Poori privacy.'
     }
   ];
 
   return (
-    <section className="py-stack-lg px-margin-mobile md:px-margin-desktop bg-white">
-      <div className="max-w-container-max mx-auto grid md:grid-cols-2 gap-stack-lg items-center">
+    <section className="py-16 px-6 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-10 items-center">
         <div className="reveal">
-          <span className="text-secondary font-bold text-xs uppercase tracking-wider">Human Soul vs Chatbot</span>
-          <h2 className="font-headline-lg text-headline-lg mb-6 mt-1 leading-tight text-black-bg font-black">
-            Why Real Human Empathy Matters When Your Heart is Hurting
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-extrabold uppercase tracking-widest mb-3">
+            Human Empathy vs AI Chatbots
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4">
+            AI Robot vs Real Human Warmth
           </h2>
-          <p className="font-body-lg text-gray-600 mb-6 leading-relaxed font-medium">
-            In a world flooded with AI chatbots and automated responses, some things cannot be programmed. An AI algorithm can output bullet points, but it cannot feel your heartbreak. It cannot sigh with you, hold a soft silence, or offer real human comfort.
-          </p>
-          <p className="font-body-lg text-gray-600 mb-8 leading-relaxed font-medium">
-            Our companions don't read from a script or offer sterile advice. They listen to the tremor in your voice, validate your tears, and stand by your side until you feel lighter.
+          <p className="text-base text-slate-600 font-medium mb-6 leading-relaxed max-w-lg">
+            AI chatbots text generate kar sakte hain, par aapke dil ka dard nahi samajh sakte. Our listeners are real humans who genuinely care.
           </p>
           <button
             onClick={onOpenChat}
-            className="bg-primary text-white font-black text-sm px-8 py-4 rounded-full active:scale-95 hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 inline-flex items-center gap-2"
+            className="bg-gradient-to-r from-orange-500 to-rose-500 text-white font-black text-sm px-8 py-3.5 rounded-full active:scale-95 hover:shadow-lg hover:shadow-orange-500/25 transition-all inline-flex items-center gap-2"
           >
             <span>Talk to a Real Person Who Cares</span>
-            <span className="material-symbols-outlined text-sm">favorite</span>
+            <span className="material-symbols-outlined text-base">favorite</span>
           </button>
         </div>
 
-        <div className="bg-black-bg rounded-xxl p-8 md:p-12 reveal border border-black-border shadow-xl text-white">
+        <div className="bg-slate-900 rounded-3xl p-8 md:p-10 reveal border border-slate-800 shadow-xl text-white">
           <div className="space-y-6">
             {points.map((pt, idx) => (
               <div key={idx} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-black-card flex items-center justify-center text-primary shrink-0 shadow-sm border border-black-border">
-                  <span className="material-symbols-outlined">{pt.icon}</span>
+                <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-rose-400 shrink-0 border border-white/10 shadow-xs">
+                  <span className="material-symbols-outlined text-xl">{pt.icon}</span>
                 </div>
                 <div>
-                  <h4 className="font-headline-md text-headline-md text-base mb-1 text-white font-extrabold">
+                  <h4 className="text-base font-extrabold text-white mb-1">
                     {pt.title}
                   </h4>
-                  <p className="text-label-md text-slate-400 leading-relaxed font-medium">
+                  <p className="text-xs text-slate-300 font-medium leading-relaxed">
                     {pt.desc}
                   </p>
                 </div>
